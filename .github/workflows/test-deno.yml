@@ -1,0 +1,77 @@
+name: Test Deno modules
+
+on:
+  workflow_call:
+    secrets:
+      CODECOV_TOKEN:
+        description: 'A Codecov token'
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Static check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+
+      - name: Check format
+        run: deno fmt --check
+
+      - name: Lint
+        run: deno lint
+
+      - name: Type check
+        run: deno task check
+
+  test:
+    name: Test
+    needs: check
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
+
+    runs-on: ${{ matrix.os }}
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+
+      - name: Cache Deno modules
+        run: deno task cache
+
+      - name: Run tests
+        run: deno task test --coverage=./coverage_profile
+
+      - name: Create coverage report
+        run: deno coverage ./coverage_profile --lcov --output=./coverage.lcov
+
+      - name: Upload to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          directory: ./
+          file: ./coverage.lcov
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

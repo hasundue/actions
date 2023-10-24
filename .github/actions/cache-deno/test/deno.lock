@@ -1,0 +1,6 @@
+{
+  "version": "3",
+  "remote": {
+    "https://deno.land/std@0.204.0/version.ts": "cca51fbe1b22320de470caba6fb845f546d843fa5ccd1c18474bf3a683557110"
+  }
+}

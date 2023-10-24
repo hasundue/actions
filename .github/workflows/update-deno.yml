@@ -34,6 +34,9 @@ jobs:
         with:
           deno-version: v1.x
 
+      - name: Setup cache for Deno
+        uses: ./.github/actions/cache-deno
+
       - name: Cache dependencies
         run: deno task cache
 

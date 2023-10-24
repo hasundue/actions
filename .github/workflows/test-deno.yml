@@ -23,6 +23,9 @@ jobs:
         with:
           deno-version: v1.x
 
+      - name: Setup cache for Deno
+        uses: ./.github/actions/cache-deno
+
       - name: Check format
         run: deno fmt --check
 
@@ -61,6 +64,9 @@ jobs:
         uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x
+
+      - name: Setup cache for Deno
+        uses: ./.github/actions/cache-deno
 
       - name: Cache Deno modules
         run: deno task cache

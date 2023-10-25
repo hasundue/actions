@@ -38,8 +38,8 @@ jobs:
           cache: true
 
       - name: Setup cache for Deno
-        uses: ./.github/actions/cache-deno
+        uses: ./cache-deno
 
       - name: Cache dependencies
         run: deno cache mod.ts
-        working-directory: ./.github/actions/cache-deno/test
+        working-directory: ./cache-deno/test

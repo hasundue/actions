@@ -1,0 +1,6 @@
+{
+  "tasks": {
+    "cache": "deno cache *.ts",
+    "test": "deno test",
+  }
+}

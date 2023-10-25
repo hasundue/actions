@@ -15,6 +15,7 @@ permissions:
 defaults:
   run:
     shell: bash
+    working-directory: ./cache-deno/test
 
 jobs:
   action-cache-deno:
@@ -37,9 +38,11 @@ jobs:
           deno-version: v1.x
           cache: true
 
-      - name: Setup cache for Deno
+      - name: Restore cache
         uses: ./cache-deno
 
       - name: Cache dependencies
-        run: deno cache mod.ts
-        working-directory: ./cache-deno/test
+        run: deno task cache
+
+      - name: Test Deno modules
+        run: deno task test

@@ -1,4 +1,5 @@
-name: Setup cache for Deno
+name: Cache Deno dependencies
+description: Setup and restore cache for Deno dependencies (multiple OS support)
 
 defaults:
   run:
@@ -7,7 +8,8 @@ defaults:
 runs:
   using: composite
   steps:
-    - uses: actions/cache@v3
+    - name: Restore cache
+      uses: actions/cache@v3
       with:
         path: |
           ~/.deno

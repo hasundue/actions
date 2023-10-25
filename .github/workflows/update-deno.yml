@@ -34,7 +34,7 @@ jobs:
         with:
           deno-version: v1.x
 
-      - name: Setup cache for Deno
+      - name: Restore cache
         uses: hasundue/actions/cache-deno@main
 
       - name: Cache dependencies

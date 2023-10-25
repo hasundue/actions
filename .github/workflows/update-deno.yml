@@ -56,7 +56,7 @@ jobs:
       - name: Create Pull Request
         if: steps.result.outputs.files_exists == 'true'
         run: |
-          gh pr create --title "$(cat title.txt)" --body "$(cat body.txt)"
+          gh pr create --title "$(cat title.txt)" --body "$(cat body.md)"
           --head ${{ inputs.head-branch }}
         env:
           GH_TOKEN: ${{ secrets.PAT_UPDATE }}

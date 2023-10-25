@@ -14,6 +14,6 @@ runs:
           ~/.cache/deno
           ~/Library/Caches/deno
           ~/AppData/Local/deno
-        key: ${{ runner.os }}-${{ runner.arch }}-deno-${{ hashFiles('deno.lock') }}
+        key: deno_cache-${{ runner.arch }}-${{ runner.os }}-${{ hashFiles('deno.lock') }}
         restore-keys: |
-          ${{ runner.os }}-${{ runner.arch }}-deno-
+          deno_cache-${{ runner.arch }}-${{ runner.os }}

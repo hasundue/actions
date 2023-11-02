@@ -30,10 +30,9 @@ jobs:
           git config user.email github-actions[bot]@users.noreply.github.com
 
       - name: Setup Deno
-        uses: hasundue/setup-deno@feat-repo-cache
+        uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x
-          cache: true
 
       - name: Restore cache
         uses: hasundue/actions/cache-deno@main

@@ -19,10 +19,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Deno
-        uses: hasundue/setup-deno@feat-repo-cache
+        uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x
-          cache: true
 
       - name: Restore cache
         uses: hasundue/actions/cache-deno@main
@@ -62,10 +61,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Deno
-        uses: hasundue/setup-deno@feat-repo-cache
+        uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x
-          cache: true
 
       - name: Restore cache
         uses: hasundue/actions/cache-deno@main

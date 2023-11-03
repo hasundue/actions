@@ -8,8 +8,8 @@ on:
         description: 'The name of the branch to push the changes to'
         default: 'github-actions/update-deno'
     secrets:
-      PAT_UPDATE:
-        description: 'A GitHub personal access token with workflow permission'
+      GH_TOKEN:
+        description: 'A GitHub token to push commits and create pull requests'
         required: true
 
 permissions:
@@ -52,6 +52,8 @@ jobs:
       - name: Push changes
         if: steps.result.outputs.files_exists == 'true'
         run: git push -f origin HEAD:${{ inputs.head-branch }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Create Pull Request
         if: steps.result.outputs.files_exists == 'true'
@@ -59,4 +61,4 @@ jobs:
           gh pr create --title "$(cat title.txt)" --body "$(cat body.md)"
           --head ${{ inputs.head-branch }}
         env:
-          GH_TOKEN: ${{ secrets.PAT_UPDATE }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}

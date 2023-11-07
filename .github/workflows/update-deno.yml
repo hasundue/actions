@@ -28,7 +28,6 @@ jobs:
         run: |
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
-          echo "GIT_USER=${{ github.actor }}:${{ secrets.GH_TOKEN }}" >> "$GITHUB_ENV"
 
       - name: Setup Deno
         uses: denoland/setup-deno@v1
@@ -63,10 +62,6 @@ jobs:
         uses: juliangruber/read-file-action@v1
         with:
           path: ../body.md
-
-      - name: Push changes
-        if: steps.result.outputs.files_exists == 'true'
-        run: git push -f origin HEAD:${{ inputs.head-branch }}
 
       - name: Create Pull Request
         if: steps.result.outputs.files_exists == 'true'

@@ -16,6 +16,11 @@ on:
         description: 'Whether to include a leading "v" in the tag name'
         required: false
         default: false
+      versioning-strategy:
+        type: string
+        description: 'The strategy to use for determining the next version'
+        required: false
+        default: 'default'
 
 permissions:
   contents: write
@@ -30,5 +35,5 @@ jobs:
           package-name: ${{ inputs.package-name }}
           release-type: ${{ inputs.release-type }}
           include-v-in-tag: ${{ inputs.include-v-in-tag }}
+          versioning-strategy: ${{ inputs.versioning-strategy }}
           bump-minor-pre-major: true
-          bump-patch-for-minor-pre-major: true

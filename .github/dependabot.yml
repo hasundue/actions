@@ -10,4 +10,4 @@ updates:
     schedule:
       interval: "daily"
     ignore:
-      dependency-name: "google-github-actions/release-please-action"
+      dependency-name: "release-please-action"

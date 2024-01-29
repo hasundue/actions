@@ -45,7 +45,7 @@ jobs:
 
       - name: Check result
         id: result
-        uses: andstor/file-existence-action@v2
+        uses: andstor/file-existence-action@v3
         with:
           files: ../title.txt, ../body.md
       

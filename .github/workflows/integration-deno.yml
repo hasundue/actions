@@ -2,6 +2,11 @@ name: Integration
 
 on:
   workflow_call:
+    inputs:
+      task: 
+        description: 'The task to run'
+        type: string
+        default: 'integration'
 
 permissions:
   contents: read
@@ -29,4 +34,4 @@ jobs:
         uses: hasundue/actions/cache-deno@main
 
       - name: Run tests
-        run: deno task test:integration
+        run: deno task ${{ inputs.task }}

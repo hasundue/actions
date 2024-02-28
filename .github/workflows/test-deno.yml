@@ -1,4 +1,4 @@
-name: Test Deno modules
+name: Test
 
 on:
   workflow_call:
@@ -39,7 +39,7 @@ jobs:
         run: deno task check
 
   test:
-    name: Test
+    name: Unit test
     needs: check
 
     strategy:

@@ -1,4 +1,4 @@
-name: Integration test for Deno modules
+name: Integration
 
 on:
   workflow_call:
@@ -6,8 +6,9 @@ on:
 permissions:
   contents: read
 
-  integration:
-    name: Integration test
+jobs:
+  test:
+    name: Test
 
     runs-on: ubuntu-latest
 

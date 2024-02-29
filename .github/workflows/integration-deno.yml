@@ -33,5 +33,8 @@ jobs:
       - name: Restore cache
         uses: hasundue/actions/cache-deno@main
 
+      - name: Cache dependencies
+        run: deno task cache
+
       - name: Run tests
         run: deno task ${{ inputs.task }}

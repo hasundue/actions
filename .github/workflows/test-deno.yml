@@ -17,7 +17,7 @@ permissions:
 
 jobs:
   check:
-    name: Static check
+    name: Static
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -43,8 +43,8 @@ jobs:
       - name: Type check
         run: deno task check
 
-  test:
-    name: Unit test
+  unit:
+    name: Unit
     needs: check
 
     strategy:

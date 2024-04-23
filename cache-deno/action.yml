@@ -18,4 +18,4 @@ runs:
           ~/AppData/Local/deno
         key: deno_cache-${{ runner.arch }}-${{ runner.os }}-${{ hashFiles('deno.lock') }}
         restore-keys: |
-          deno_cache-${{ runner.arch }}-${{ runner.os }}
+          deno_cache-${{ runner.arch }}-${{ runner.os }}-${{ hashFiles('deno.lock') }}

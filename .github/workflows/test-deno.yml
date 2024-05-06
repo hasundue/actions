@@ -7,6 +7,10 @@ on:
         description: 'The task to run'
         type: string
         default: 'test'
+    secrets:
+      CODECOV_TOKEN:
+        description: 'A Codecov token'
+        required: true
 
 permissions:
   contents: read
@@ -83,3 +87,5 @@ jobs:
         with:
           directory: ./
           file: ./coverage.lcov
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

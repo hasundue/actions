@@ -87,5 +87,4 @@ jobs:
         with:
           directory: ./
           file: ./coverage.lcov
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+          token: ${{ secrets.CODECOV_TOKEN }}

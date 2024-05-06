@@ -7,6 +7,10 @@ on:
         description: 'The task to run'
         type: string
         default: 'test'
+    secrets:
+      CODECOV_TOKEN:
+        description: 'A Codecov token'
+        required: true
 
 permissions:
   contents: read
@@ -77,3 +81,10 @@ jobs:
 
       - name: Create coverage report
         run: deno coverage ./coverage_profile --lcov --output=./coverage.lcov
+
+      - name: Upload to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          directory: ./
+          file: ./coverage.lcov
+          token: ${{ secrets.CODECOV_TOKEN }}

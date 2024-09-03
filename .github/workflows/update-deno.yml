@@ -65,7 +65,7 @@ jobs:
 
       - name: Create Pull Request
         if: steps.result.outputs.files_exists == 'true'
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GH_TOKEN }}
           author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>

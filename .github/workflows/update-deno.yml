@@ -30,7 +30,7 @@ jobs:
           git config user.email github-actions[bot]@users.noreply.github.com
 
       - name: Setup Deno
-        uses: denoland/setup-deno@v1
+        uses: denoland/setup-deno@v2
         with:
           deno-version: v1.x
 
